@@ -80,7 +80,7 @@ This CocoaPods library will collect some events for the backend.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/NutsNet/HeapSdk.git", :commit => "0.0.1" }
+  spec.source       = { :git => "https://github.com/NutsNet/HeapSdk.git", :tag => "v0.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
