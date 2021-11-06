@@ -8,7 +8,7 @@
 import Foundation
 
 
-class HSdk: NSObject {
+public class HSdk: NSObject {
     
     static let shared = HSdk()
     override init() {
