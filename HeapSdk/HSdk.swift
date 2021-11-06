@@ -10,7 +10,7 @@ import Foundation
 
 public class HSdk: NSObject {
     
-    static let shared = HSdk()
+    let shared = HSdk()
     override init() {
         super.init()
         
