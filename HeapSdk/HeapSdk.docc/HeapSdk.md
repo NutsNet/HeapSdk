@@ -1,13 +1,15 @@
-# ``HeapSdk``
+# Heap SDK challenge how to:
 
-<!--@START_MENU_TOKEN@-->Summary<!--@END_MENU_TOKEN@-->
+## Introduction
 
-## Overview
+I will build the Heap SDK and try it with a test application I built for a challenge during the [Fleetio](https://www.fleetio.com/) company recruitment process.
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+The test application repository is [FleetioTest](https://github.com/NutsNet/FleetioTest), please read the README.md
 
-## Topics
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
-
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+Add in your info plist
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>

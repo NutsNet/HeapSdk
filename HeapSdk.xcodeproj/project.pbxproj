@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51B708B897CE61FCC5EBC68C /* Pods_HeapSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D97A0B63E6D6D309C160288 /* Pods_HeapSdk.framework */; };
+		C60DD69E27371DD500C1D99D /* HApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60DD69D27371DD500C1D99D /* HApi.swift */; };
 		C685D2BE27361CB40063F284 /* HeapSdk.docc in Sources */ = {isa = PBXBuildFile; fileRef = C685D2BD27361CB40063F284 /* HeapSdk.docc */; };
 		C685D2C427361CB40063F284 /* HeapSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C685D2B927361CB40063F284 /* HeapSdk.framework */; };
 		C685D2C927361CB40063F284 /* HeapSdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D2C827361CB40063F284 /* HeapSdkTests.swift */; };
@@ -25,12 +27,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D97A0B63E6D6D309C160288 /* Pods_HeapSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeapSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC0A24C971B86E36E4E4B585 /* Pods-HeapSdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeapSdk.release.xcconfig"; path = "Target Support Files/Pods-HeapSdk/Pods-HeapSdk.release.xcconfig"; sourceTree = "<group>"; };
+		C60DD69D27371DD500C1D99D /* HApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HApi.swift; sourceTree = "<group>"; };
 		C685D2B927361CB40063F284 /* HeapSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HeapSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C685D2BC27361CB40063F284 /* HeapSdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeapSdk.h; sourceTree = "<group>"; };
 		C685D2BD27361CB40063F284 /* HeapSdk.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = HeapSdk.docc; sourceTree = "<group>"; };
 		C685D2C327361CB40063F284 /* HeapSdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeapSdkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C685D2C827361CB40063F284 /* HeapSdkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapSdkTests.swift; sourceTree = "<group>"; };
 		C685D2D327361F140063F284 /* HSdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSdk.swift; sourceTree = "<group>"; };
+		DB8E54B33C0BBEF1826A2753 /* Pods-HeapSdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeapSdk.debug.xcconfig"; path = "Target Support Files/Pods-HeapSdk/Pods-HeapSdk.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51B708B897CE61FCC5EBC68C /* Pods_HeapSdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,12 +59,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C0198238C174241173ACD08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D97A0B63E6D6D309C160288 /* Pods_HeapSdk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B90006EDBA6FB34BFCD8C4B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB8E54B33C0BBEF1826A2753 /* Pods-HeapSdk.debug.xcconfig */,
+				AC0A24C971B86E36E4E4B585 /* Pods-HeapSdk.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C685D2AF27361CB40063F284 = {
 			isa = PBXGroup;
 			children = (
 				C685D2BB27361CB40063F284 /* HeapSdk */,
 				C685D2C727361CB40063F284 /* HeapSdkTests */,
 				C685D2BA27361CB40063F284 /* Products */,
+				9B90006EDBA6FB34BFCD8C4B /* Pods */,
+				6C0198238C174241173ACD08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +101,7 @@
 			children = (
 				C685D2BC27361CB40063F284 /* HeapSdk.h */,
 				C685D2D327361F140063F284 /* HSdk.swift */,
+				C60DD69D27371DD500C1D99D /* HApi.swift */,
 				C685D2BD27361CB40063F284 /* HeapSdk.docc */,
 			);
 			path = HeapSdk;
@@ -106,6 +133,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C685D2CD27361CB40063F284 /* Build configuration list for PBXNativeTarget "HeapSdk" */;
 			buildPhases = (
+				8E22CB2A8498323A5F818F7D /* [CP] Check Pods Manifest.lock */,
 				C685D2B427361CB40063F284 /* Headers */,
 				C685D2B527361CB40063F284 /* Sources */,
 				C685D2B627361CB40063F284 /* Frameworks */,
@@ -192,11 +220,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E22CB2A8498323A5F818F7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeapSdk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C685D2B527361CB40063F284 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60DD69E27371DD500C1D99D /* HApi.swift in Sources */,
 				C685D2BE27361CB40063F284 /* HeapSdk.docc in Sources */,
 				C685D2D427361F140063F284 /* HSdk.swift in Sources */,
 			);
@@ -345,7 +399,9 @@
 		};
 		C685D2CE27361CB40063F284 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB8E54B33C0BBEF1826A2753 /* Pods-HeapSdk.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -374,7 +430,9 @@
 		};
 		C685D2CF27361CB40063F284 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC0A24C971B86E36E4E4B585 /* Pods-HeapSdk.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
