@@ -14,5 +14,20 @@ public class HApi: NSObject {
         super.init()
     }
     
-   
+    func hsdkPostEvent(parameters: Parameters) {
+        let url: String =  "http://httpbin.org/post"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                if case let json as Dictionary<String, Any> = (value as AnyObject).value(forKey: "json") {
+                    print("\n********** ********** EVENT CATCHED ********** **********")
+                    print("\(json)\n")
+                }
+            case .failure(let error):
+                print("Error in hsdkPostEvent: \(error.localizedDescription)")
+            }
+        }
+    }
 }
