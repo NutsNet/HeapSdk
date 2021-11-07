@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "HeapSdk"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.8"
   spec.summary      = "HeapSdk is a sdk chalenge"
 
   spec.description  = <<-DESC
@@ -17,5 +17,7 @@ This CocoaPods library will collect some events for the backend.
 
   spec.source       = { :git => "https://github.com/NutsNet/HeapSdk.git", :tag => "#{spec.version}" }
   spec.source_files  = "HeapSdk/**/*.{h,m,swift}"
+
+  spec.dependency 'Alamofire'
 
 end
