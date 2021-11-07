@@ -37,7 +37,7 @@ public class HSdk: NSObject {
     
     public override init() {
         super.init()
-        print("\n#### HeapSdk: init sdk")
+        print("\n#### HeapSdk: init sdk 0.0.9")
         
         // Start swizzling event methods to catch events
         UIWindow.swizzleEventMethod()
