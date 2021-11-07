@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import UIKit
 import MapKit
 
 import Alamofire
+
+private var queue = DispatchQueue(label: "hsdk.queue", qos: .background, attributes: .concurrent)
 
 public extension UIWindow {
     // Swizzeling sendEvent method with our custom catchEvent method
@@ -23,7 +26,7 @@ public extension UIWindow {
     // The SDK will catch any events coming from the testing app
     @objc func catchEvent(event: UIEvent) {
         // Event processing
-        HSdk.hapiProcessEvent(event: event)
+        queue.sync { HSdk.hapiProcessEvent(event: event) }
         
         // Releasing event to the app
         catchEvent(event: event)
@@ -43,8 +46,9 @@ public class HSdk: NSObject {
     // Process the event catched and send event to bakend with parameters
     //
     // parameters:
-    //  . type, class of the view touched
-    //  . locstion, where touched in view
+    //  . type, kind of object touched
+    //  . class, class of object touched
+    //  . location, where touched in view
     //  . timestamp, time whem view touched
     //  . info, get info about view like the name
     //
@@ -57,16 +61,22 @@ public class HSdk: NSObject {
             
             // Check if touch is released
             if touch.phase == .ended {
+                parameters["type"] = "press up"
                 
                 // Check class of the view
                 if let view = touch.view {
-                    print("VIEW : \(type(of: view))")
+                    let classObj = type(of: view)
+                    let classStr = String(describing: view)
+                    
+                    print(classObj)
+                    print(classStr)
+                    
                     parameters["location"] = "(x: \(touch.location(in: view).x), y: \(touch.location(in: view).y))"
                     
                     // UIButton
-                    if type(of: view) == UIButton.self {
+                    if classObj == UIButton.self {
                         let button = view as! UIButton
-                        parameters["type"] = "button"
+                        parameters["class"] = "UIButton"
                         
                         if (button.imageView?.image) != nil {
                             // it seems this is not possible to get the name of the image
@@ -74,6 +84,47 @@ public class HSdk: NSObject {
                         } else if let title = button.title(for: .normal) {
                             parameters["info"] = title
                         }
+                    }
+                    
+                    // UILabel
+                    if classObj == UILabel.self {
+                        let label = view as! UILabel
+                        parameters["class"] = "UILabel"
+                        
+                        if let title = label.text {
+                            parameters["info"] = title
+                        }
+                    }
+                    
+                    // UIImageView
+                    if classObj == UIImageView.self {
+                        parameters["class"] = "UIImageView"
+                    }
+                    
+                    // UIVisualEffectView
+                    if classObj == UIVisualEffectView.self {
+                        parameters["class"] = "UIVisualEffectView"
+                    }
+                    
+                    // Table view
+                    if classStr.contains("UITableViewCellContentView") {
+                        parameters["class"] = "UITableViewCellContentView"
+                        parameters["info"] = "user touched a cell in a table view"
+                    }
+                    
+                    // Map
+                    if classStr.contains("MKAnnotationView") {
+                        parameters["class"] = "MKAnnotationView"
+                        parameters["info"] = "user is selecting an annotation"
+                    } else if classStr.contains("_MKBezierPathView") {
+                        parameters["class"] = "_MKBezierPathView"
+                        parameters["info"] = "user is selecting an annotation"
+                    } else if classStr.contains("MKAnnotationContainerView") {
+                        parameters["class"] = "MKAnnotationContainerView"
+                        parameters["info"] = "user is using the map"
+                    } else if classStr.contains("MapView") {
+                        parameters["class"] = "MapView"
+                        parameters["info"] = "user is using the map"
                     }
                 }
             }
