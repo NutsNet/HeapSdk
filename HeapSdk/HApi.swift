@@ -10,6 +10,7 @@ import Alamofire
 
 public class HApi: NSObject {
     
+    public static let shared = HApi()
     public override init() {
         super.init()
     }
@@ -22,7 +23,7 @@ public class HApi: NSObject {
             switch response.result {
             case .success(let value):
                 if case let json as Dictionary<String, Any> = (value as AnyObject).value(forKey: "json") {
-                    print("\n********** ********** EVENT CATCHED ********** **********")
+                    print("\n########## ########## EVENT CATCHED ########## ##########")
                     print("\(json)\n")
                 }
             case .failure(let error):
