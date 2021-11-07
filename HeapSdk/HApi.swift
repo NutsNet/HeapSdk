@@ -15,7 +15,7 @@ public class HApi: NSObject {
         super.init()
     }
     
-    func hsdkPostEvent(parameters: Parameters) {
+    func hapiPostEvent(parameters: Parameters, escap:@escaping (Dictionary<String, Any>) -> Void) {
         let url: String =  "http://httpbin.org/post"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
@@ -25,8 +25,13 @@ public class HApi: NSObject {
                 if case let json as Dictionary<String, Any> = (value as AnyObject).value(forKey: "json") {
                     print("\n#### HeapSdk: event catched and sent to backend")
                     print("\(json)\n")
+                    escap(json)
+                } else {
+                    escap([:])
+                    print("Error in hsdkPostEvent: empty json")
                 }
             case .failure(let error):
+                escap([:])
                 print("Error in hsdkPostEvent: \(error.localizedDescription)")
             }
         }

@@ -14,6 +14,7 @@
 		C685D2C927361CB40063F284 /* HeapSdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D2C827361CB40063F284 /* HeapSdkTests.swift */; };
 		C685D2CA27361CB40063F284 /* HeapSdk.h in Headers */ = {isa = PBXBuildFile; fileRef = C685D2BC27361CB40063F284 /* HeapSdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C685D2D427361F140063F284 /* HSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D2D327361F140063F284 /* HSdk.swift */; };
+		F8603ADA505035D5ACC2403F /* Pods_HeapSdkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5DB0D3EBEA4FD48D285568 /* Pods_HeapSdkTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +29,9 @@
 
 /* Begin PBXFileReference section */
 		7D97A0B63E6D6D309C160288 /* Pods_HeapSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeapSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F5DB0D3EBEA4FD48D285568 /* Pods_HeapSdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeapSdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F60354A1F46F7395D18C5F6 /* Pods-HeapSdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeapSdkTests.release.xcconfig"; path = "Target Support Files/Pods-HeapSdkTests/Pods-HeapSdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		9F9AA258A56392334D4200FB /* Pods-HeapSdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeapSdkTests.debug.xcconfig"; path = "Target Support Files/Pods-HeapSdkTests/Pods-HeapSdkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC0A24C971B86E36E4E4B585 /* Pods-HeapSdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeapSdk.release.xcconfig"; path = "Target Support Files/Pods-HeapSdk/Pods-HeapSdk.release.xcconfig"; sourceTree = "<group>"; };
 		C60DD69D27371DD500C1D99D /* HApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HApi.swift; sourceTree = "<group>"; };
 		C685D2B927361CB40063F284 /* HeapSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HeapSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C685D2C427361CB40063F284 /* HeapSdk.framework in Frameworks */,
+				F8603ADA505035D5ACC2403F /* Pods_HeapSdkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				7D97A0B63E6D6D309C160288 /* Pods_HeapSdk.framework */,
+				8F5DB0D3EBEA4FD48D285568 /* Pods_HeapSdkTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -72,6 +78,8 @@
 			children = (
 				DB8E54B33C0BBEF1826A2753 /* Pods-HeapSdk.debug.xcconfig */,
 				AC0A24C971B86E36E4E4B585 /* Pods-HeapSdk.release.xcconfig */,
+				9F9AA258A56392334D4200FB /* Pods-HeapSdkTests.debug.xcconfig */,
+				9F60354A1F46F7395D18C5F6 /* Pods-HeapSdkTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -152,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C685D2D027361CB40063F284 /* Build configuration list for PBXNativeTarget "HeapSdkTests" */;
 			buildPhases = (
+				017DA504115FBD374A56D500 /* [CP] Check Pods Manifest.lock */,
 				C685D2BF27361CB40063F284 /* Sources */,
 				C685D2C027361CB40063F284 /* Frameworks */,
 				C685D2C127361CB40063F284 /* Resources */,
+				6AAF628757F120635FE46936 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,6 +231,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		017DA504115FBD374A56D500 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeapSdkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AAF628757F120635FE46936 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeapSdkTests/Pods-HeapSdkTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeapSdkTests/Pods-HeapSdkTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeapSdkTests/Pods-HeapSdkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8E22CB2A8498323A5F818F7D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -461,6 +510,7 @@
 		};
 		C685D2D127361CB40063F284 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F9AA258A56392334D4200FB /* Pods-HeapSdkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -483,6 +533,7 @@
 		};
 		C685D2D227361CB40063F284 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F60354A1F46F7395D18C5F6 /* Pods-HeapSdkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
