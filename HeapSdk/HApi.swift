@@ -23,7 +23,7 @@ public class HApi: NSObject {
             switch response.result {
             case .success(let value):
                 if case let json as Dictionary<String, Any> = (value as AnyObject).value(forKey: "json") {
-                    print("\n########## ########## EVENT CATCHED ########## ##########")
+                    print("\n#### HeapSdk: event catched and sent to backend")
                     print("\(json)\n")
                 }
             case .failure(let error):

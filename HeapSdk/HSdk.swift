@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import MapKit
+
 import Alamofire
 
 public extension UIWindow {
     // Swizzeling sendEvent method with our custom catchEvent method
     static func swizzleEventMethod() {
-        print("\n#### HeapSdk: start catching event\n")
+        print("#### HeapSdk: start catching event\n")
         
         let originalMethod = class_getInstanceMethod(UIWindow.self, #selector(sendEvent(_:)))!
         let swizzledMethod = class_getInstanceMethod(UIWindow.self, #selector(catchEvent(event:)))!
@@ -32,7 +34,7 @@ public class HSdk: NSObject {
     
     public override init() {
         super.init()
-        print("\n#### HeapSdk: init sdk\n")
+        print("\n#### HeapSdk: init sdk")
         
         // Start swizzling event methods to catch events
         UIWindow.swizzleEventMethod()
@@ -42,10 +44,9 @@ public class HSdk: NSObject {
     //
     // parameters:
     //  . type, class of the view touched
+    //  . locstion, where touched in view
     //  . timestamp, time whem view touched
     //  . info, get info about view like the name
-    //  .
-    //  .
     //
     static func hapiProcessEvent(event: UIEvent) {
         var parameters = Parameters()
@@ -54,20 +55,25 @@ public class HSdk: NSObject {
         // Check view touched
         for touch in event.allTouches! {
             
-            // Check class of the view
-            if let view = touch.view {
+            // Check if touch is released
+            if touch.phase == .ended {
                 
-                // UIButton
-                if type(of: view) == UIButton.self {
-                    let button = view as! UIButton
-                    parameters["type"] = "Button"
+                // Check class of the view
+                if let view = touch.view {
+                    print("VIEW : \(type(of: view))")
+                    parameters["location"] = "(x: \(touch.location(in: view).x), y: \(touch.location(in: view).y))"
                     
-                    if let image = button.imageView?.image {
-                        if let name = image.accessibilityIdentifier?.description {
-                            print(name)
+                    // UIButton
+                    if type(of: view) == UIButton.self {
+                        let button = view as! UIButton
+                        parameters["type"] = "button"
+                        
+                        if (button.imageView?.image) != nil {
+                            // it seems this is not possible to get the name of the image
+                            parameters["info"] = "image"
+                        } else if let title = button.title(for: .normal) {
+                            parameters["info"] = title
                         }
-                    } else if let title = button.title(for: .normal) {
-                        parameters["info"] = title
                     }
                 }
             }
